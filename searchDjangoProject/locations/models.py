@@ -4,13 +4,15 @@ from django.db import models
 from django.db import models
 
 class Country(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=200)
 
 class State(models.Model):
+    name = models.CharField(max_length=200)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
 
 class Place(models.Model):
+    name = models.CharField(max_length=200)
     state = models.ForeignKey(State, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
