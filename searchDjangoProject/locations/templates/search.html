@@ -6,6 +6,7 @@
     <button type="submit">Search</button>
 </form>
 
+
 <ul>
 {% for place in places %}
     <li>{{ place.state.country.name }} > {{ place.state.name }} > {{ place.name }}</li>
