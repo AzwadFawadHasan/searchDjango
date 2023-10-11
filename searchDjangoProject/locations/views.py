@@ -17,3 +17,11 @@ def search(request):
         places = Place.objects.filter(Q(name__icontains=query) | Q(state__name__icontains=query))
 
     return render(request, 'search.html', {'places': places, 'query': query})
+
+
+from django.http import JsonResponse
+
+def autocomplete(request):
+    query = request.GET.get('q', '')
+    places = Place.objects.filter(name__icontains=query).values_list('name', flat=True)
+    return JsonResponse(list(places), safe=False)
