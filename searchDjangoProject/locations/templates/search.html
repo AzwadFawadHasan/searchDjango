@@ -33,7 +33,7 @@
             let query = $(this).val();
             if (query.length >= 2) {  // Only search if at least 2 characters
                 $.get('/autocomplete/', {q: query}, function(data) {
-                    // Display data (you can improve this)
+                    // Display data
                     let suggestions = data.map(item => `<li>${item}</li>`);
                     $('#autocomplete-results').html(suggestions.join(''));
                 });
